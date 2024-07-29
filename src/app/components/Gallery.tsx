@@ -4,15 +4,30 @@ import ImgContainer from './ImgContainer';
 import addBlurredDataUrls from '@/lib/getBase64';
 
 type Props = {
-  topic?: string | undefined
-}
+  topic?: string | undefined;
+  page?: string | undefined;
+};
 
-export default async function Gallery({ topic }: Props) {
-  const url = !topic ? 'https://api.pexels.com/v1/curated' : `https://api.pexels.com/v1/search?query=${topic}`;
+export default async function Gallery({ topic = 'curated', page }: Props) {
+  // const url = !topic ? 'https://api.pexels.com/v1/curated' : `https://api.pexels.com/v1/search?query=${topic}`;
+  let url;
+  if (topic === 'curated' && page) {
+    //browsing beyond home
+    url = `https://api.pexels.com/v1/curated?page=${page}`;
+  } else if (topic === 'curated') {
+    //home
+    url = 'https://api.pexels.com/v1/curated';
+  } else if (!page) {
+    // 1st page of search results
+    url = `https://api.pexels.com/v1/search?query=${topic}`;
+  } else {
+    // search result beyond 1st page
+    url = `https://api.pexels.com/v1/search?query=${topic}&page=${page}`;
+  }
 
   const images: ImagesResults | undefined = await fetchImages(url);
 
-  if (!images)
+  if (!images || images.per_page === 0)
     return <h2 className="m-4 text-2xl font-bold">No Images Found</h2>;
 
   const photosWithBlur = await addBlurredDataUrls(images);
