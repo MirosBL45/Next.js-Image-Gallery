@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project: Pexels Image Gallery
 
-## Getting Started
+This project is an image gallery application that fetches images from pexels.com. It features pagination and allows users to search for images based on the object in the picture (e.g., typing "cat" displays images of cats). The application was built using the following technologies and tools:
 
-First, run the development server:
+### 1. **Framework and Core**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **NextJS**: A React framework that provides server-side rendering and static site generation, enhancing performance and SEO.
+- **TypeScript**: A statically typed superset of JavaScript that enhances code quality and maintainability.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. **Styling**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Tailwind CSS**: A utility-first CSS framework that enables the creation of responsive and custom designs efficiently.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 3. **Validation and Data Handling**
 
-## Learn More
+- **zod**: A TypeScript-first schema declaration and validation library used to ensure the correctness of data throughout the application.
+  - <a href="https://github.com/colinhacks/zod" target="_blank">Learn more about zod</a>
+- **plaiceholder**: A library for generating low-quality image placeholders, improving the user experience by providing a preview while images load.
+  - <a href="https://plaiceholder.co/" target="_blank">Learn more about plaiceholder</a>
+- **envalid**: A library for validating environment variables to ensure the application configuration is correct and secure.
+  - <a href="https://github.com/af/envalid" target="_blank">Learn more about envalid</a>
 
-To learn more about Next.js, take a look at the following resources:
+### 4. **Image Fetching and Search**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Pexels API**: Used to fetch images from pexels.com, allowing users to browse a wide range of high-quality photos.
+  - <a href="https://www.pexels.com/api/" target="_blank">Learn more about Pexels API</a>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Each of these technologies plays a vital role in delivering a modern, efficient, and user-friendly image gallery application.
