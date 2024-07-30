@@ -3,6 +3,7 @@ import type { ImagesResults } from '@/models/Images';
 import ImgContainer from './ImgContainer';
 import addBlurredDataUrls from '@/lib/getBase64';
 import getPrevNextPages from '@/lib/getPrevNextPages';
+import Footer from './Footer';
 
 type Props = {
   topic?: string | undefined;
@@ -10,13 +11,12 @@ type Props = {
 };
 
 export default async function Gallery({ topic = 'curated', page }: Props) {
-  // const url = !topic ? 'https://api.pexels.com/v1/curated' : `https://api.pexels.com/v1/search?query=${topic}`;
   let url;
   if (topic === 'curated' && page) {
-    //browsing beyond home
+    // browsing beyond home
     url = `https://api.pexels.com/v1/curated?page=${page}`;
   } else if (topic === 'curated') {
-    //home
+    // home
     url = 'https://api.pexels.com/v1/curated';
   } else if (!page) {
     // 1st page of search results
@@ -40,15 +40,15 @@ export default async function Gallery({ topic = 'curated', page }: Props) {
   return (
     <>
       <section className="px-1 my-3 grid grid-cols-gallery auto-rows-[10px]">
-        {/* <section className="px-2 my-3 grid gap-2 grid-cols-gallery auto-rows-[10px]"> */}
         {photosWithBlur.map((photo) => (
           <ImgContainer key={photo.id} photo={photo} />
         ))}
       </section>
-      {/* add footer */}
+      <Footer {...footerProps} />
     </>
   );
 }
+
 // 'use client';
 
 // import { useEffect, useState } from 'react';
