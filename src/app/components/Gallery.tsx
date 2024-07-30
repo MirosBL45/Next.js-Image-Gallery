@@ -2,6 +2,7 @@ import fetchImages from '@/lib/fetchImages';
 import type { ImagesResults } from '@/models/Images';
 import ImgContainer from './ImgContainer';
 import addBlurredDataUrls from '@/lib/getBase64';
+import getPrevNextPages from '@/lib/getPrevNextPages';
 
 type Props = {
   topic?: string | undefined;
@@ -32,15 +33,20 @@ export default async function Gallery({ topic = 'curated', page }: Props) {
 
   const photosWithBlur = await addBlurredDataUrls(images);
 
-  // calculate pagination
+  const { prevPage, nextPage } = getPrevNextPages(images);
+
+  const footerProps = { topic, page, nextPage, prevPage };
 
   return (
-    <section className="px-1 my-3 grid grid-cols-gallery auto-rows-[10px]">
-      {/* <section className="px-2 my-3 grid gap-2 grid-cols-gallery auto-rows-[10px]"> */}
-      {photosWithBlur.map((photo) => (
-        <ImgContainer key={photo.id} photo={photo} />
-      ))}
-    </section>
+    <>
+      <section className="px-1 my-3 grid grid-cols-gallery auto-rows-[10px]">
+        {/* <section className="px-2 my-3 grid gap-2 grid-cols-gallery auto-rows-[10px]"> */}
+        {photosWithBlur.map((photo) => (
+          <ImgContainer key={photo.id} photo={photo} />
+        ))}
+      </section>
+      {/* add footer */}
+    </>
   );
 }
 // 'use client';
