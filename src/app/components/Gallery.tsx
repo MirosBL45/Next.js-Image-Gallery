@@ -32,6 +32,8 @@ export default async function Gallery({ topic = 'curated', page }: Props) {
 
   const photosWithBlur = await addBlurredDataUrls(images);
 
+  // calculate pagination
+
   return (
     <section className="px-1 my-3 grid grid-cols-gallery auto-rows-[10px]">
       {/* <section className="px-2 my-3 grid gap-2 grid-cols-gallery auto-rows-[10px]"> */}
