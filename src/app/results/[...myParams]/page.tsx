@@ -12,7 +12,7 @@ export function generateMetadata({ params: { myParams } }: Props) {
   const page = myParams?.[1] ?? '1';
 
   return {
-    title: `Results for ${topic} - Page ${page}`,
+    title: `${topic} you want - Page ${page}`,
   };
 }
 

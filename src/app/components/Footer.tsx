@@ -39,7 +39,7 @@ export default function Footer({ topic, page, prevPage, nextPage }: Props) {
         page && num === parseInt(page) ? (
           <span key={i}>{num}</span>
         ) : (
-          <Link key={i} href={`/results/${topic}/${num}`} className="underline">
+          <Link key={i} href={`/results/${topic}/${num}`} className="underline text-green-600">
             {num}
           </Link>
         )
