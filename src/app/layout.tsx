@@ -6,7 +6,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Next.js Image Gallery',
-  description: 'Very cool Next.js Image Gallery',
+  description: 'Just great Next.js Image Gallery',
 }
 
 export default function RootLayout({
